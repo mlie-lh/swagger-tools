@@ -1,9 +1,9 @@
 export const paramsRender = data => {
   const str = data.value.map(item => {
     const {value, key} = item
-    if (typeof value === 'string') return `${key}:'${value.replace(/\[.+]\s/, '')}',`
-    if (typeof value === 'object') `${key}:{},`
-  }).join('')
+    if (typeof value === 'string') return `${key}:'${value.replace(/\[.+]\s/, '')}'`
+    if (typeof value === 'object') `${key}:{}`
+  }).join(',')
   return `const params = {${str}}`
 }
 export const tableRender = data => {
@@ -11,7 +11,7 @@ export const tableRender = data => {
     const {value, key} = item
     if (typeof value === 'string') return `<p-table-column data-index='${key}' title='${value.replace(/\[.+]\s/, '')}' />`
     if (typeof value === 'object') return `<p-table-column data-index='${key}' title='char${index}' />`
-  }, '').join('')
+  }, '').join('\n')
   return `
         <p-table ref='dataSource' :data-source.sync='dataSource' :loading='spinning' :remote-url='listRemoteUrl' :remoteData='listParams' :selectedRowKeys.sync='selectedRowKeys' bordered dragle row-key='id'>
         ${columnStr}
@@ -26,5 +26,11 @@ export const tableRender = data => {
       </p-table>`
 }
 export const vueRender = data => {
+  const htmlStr = `
+  `
+  const jsStr = `
+  `
+
+
   return data.toString()
 }

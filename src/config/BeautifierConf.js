@@ -1,4 +1,4 @@
-const beautifierConf = {
+export default {
   html: {
     indent_size: '2',
     indent_char: ' ',
@@ -38,4 +38,3 @@ const beautifierConf = {
     indent_empty_lines: true
   }
 }
-export default beautifierConf

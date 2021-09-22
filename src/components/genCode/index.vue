@@ -40,6 +40,8 @@ const pathData = ref([])
 const renderResultCode = () => {
   const codeStr = curCodeTypeObj.value.resolve(pathData)
   const type = curCodeTypeObj.value.type
+  console.log(type)
+  // console.log(beautifier(codeStr, BeautifierConf[type]))
   setEditorValue(type, beautifier(codeStr, BeautifierConf[type]))
 }
 watch(() => codeTypeIndex.value, renderResultCode)
